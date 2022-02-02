@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form List</title>
+    <style>
+      table {
+        margin: 35px auto;
+        width: 100%;
+      }
+      tr,
+      td,
+      th,
+      table {
+        border: 2px solid lightblue;
+        border-collapse: collapse;
+        text-align:"center";
+      }
+      tfoot{
+        text-align:"center";
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        List of Students
+      </caption>
+      <thead>
+        <tr>
+          <th>Student_id</th>
+          <th>Student's Name</th>
+          <th>Age</th>
+          <th>Address</th>
+          <th>Grade</th>
+          <th>Major</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan=7>
+
+            <a href={%url 'students-entry:create' %}>Add</a>
+          </td>
+        </tr>
+        
+      </tfoot>
+      <tbody>
+        {%for object in object_list%}
+        <tr>
+          <td>{{object.id}}</td>
+          <td>{{object.name}}</td>
+          <td>{{object.age}}</td>
+          <td>{{object.address}}</td>
+          <td>{{object.grade}}</td>
+          <td>{{object.major}}</td>
+          <td>
+            <a href={%url 'students-entry:update' object.id%}>Update</a> |
+            <a href={%url 'students-entry:delete' object.id%}>Delete
+          </a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+
+    </table>
+  </body>
+</html>
